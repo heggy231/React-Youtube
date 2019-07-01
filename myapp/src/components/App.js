@@ -4,14 +4,17 @@ import youtube from '../apis/youtube';
 
 class App extends React.Component {
   // user's search string: term
-  onTermSubmit = (term) => {
-    youtube.get('/search', {
+  // axios is async
+  onTermSubmit = async (term) => {
+    const response = await youtube.get('/search', {
       params: {
         // q is from youtube documentation
         // https://developers.google.com/youtube/v3/docs/search/list?apix=true
         q:term
       }
     });
+    // view the async response obj
+    console.log(response);
   };
 
   render() {
