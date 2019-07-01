@@ -3,6 +3,11 @@ import SearchBar from './SearchBar';
 import youtube from '../apis/youtube';
 
 class App extends React.Component {
+  state = {
+    // once user search for videos -> we will update this array
+    //  with request array: `response.data.items`
+    videos: []
+  };
   // user's search string: term
   // axios is async
   onTermSubmit = async (term) => {
@@ -14,13 +19,17 @@ class App extends React.Component {
       }
     });
     // view the async response obj
-    console.log(response);
+    // console.log(response);
+
+    // response.data.items is an array of obj request obj returns when user search for videos
+      this.setState({ videos: response.data.items });
   };
 
   render() {
     return (
       <div className="ui container">
         <SearchBar onFormSubmit={this.onTermSubmit}/>
+        I have {this.state.videos.length} videos.
       </div>
     );
   }
