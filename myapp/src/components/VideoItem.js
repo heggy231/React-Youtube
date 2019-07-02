@@ -7,9 +7,9 @@ import React from 'react';
 
 // export default VideoItem;
 // There are 5 separate instances of video component and each have separate video obj
-const VideoItem = ({ video }) => {
+const VideoItem = ({ video, onVideoSelect }) => {
   return (
-    <div className="video-item item">
+    <div onClick={ () => onVideoSelect(video) } className="video-item item">
       <img className="ui image" src={video.snippet.thumbnails.medium.url} />
       <div className="content">
         <div className="header">

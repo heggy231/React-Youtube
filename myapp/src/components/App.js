@@ -7,7 +7,8 @@ class App extends React.Component {
   state = {
     // once user search for videos -> we will update this array
     //  with request array: `response.data.items`
-    videos: []
+    videos: [],
+    selectedVideo: null
   };
   // user's search string: term
   // axios is async
@@ -23,14 +24,22 @@ class App extends React.Component {
     // console.log(response);
 
     // `response.data.items` => an array of obj request obj returns when user search for videos
-    this.setState({ videos: response.data.items });
+    this.setState({ videos: response.data.items }
+    );
+  };
+
+  onVideoSelect = (video) => {
+    console.log('From the App!', video);
   };
 
   render() {
     return (
       <div className="ui container">
         <SearchBar onFormSubmit={this.onTermSubmit}/>
-        <VideoList videos={this.state.videos} />
+        <VideoList 
+          videos={this.state.videos}
+          onVideoSelect={this.onVideoSelect}
+        />
       </div>
     );
   }
