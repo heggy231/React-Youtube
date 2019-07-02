@@ -8,9 +8,14 @@ const VideoDetail = ({ video }) => {
     return <div>Loading...</div>;
   }
 
+  const videoSrc = `https://www.youtube.com/embed/${video.id.videoId}`;
+
   // props.video ===> video destructuring es6
   return (
     <div>
+      <div className="ui embed">
+        <iframe title="video player" src={videoSrc} />
+      </div>
       {/* ui segment is card box style */}
       <div className="ui segment">
         <h4 className="ui header">

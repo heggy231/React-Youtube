@@ -17,7 +17,13 @@ const VideoList = ({ videos, onVideoSelect }) => {
   // mapping over the videos array
   const renderedList = videos.map((video) => {
     // list of different video item components
-    return <VideoItem onVideoSelect={onVideoSelect} video={video} />;
+    return (
+      <VideoItem 
+        key={video.id.videoId}
+        onVideoSelect={onVideoSelect} 
+        video={video} 
+      />
+    );
   });
 
   return <div className="ui relaxed divided list">{renderedList}</div>;
