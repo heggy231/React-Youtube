@@ -11,6 +11,11 @@ class App extends React.Component {
     videos: [],
     selectedVideo: null
   };
+
+  componentDidMount() {
+    // show a default video as soon as the app loads
+    this.onTermSubmit('buildings');
+  }
   // user's search string: term
   // axios is async
   onTermSubmit = async (term) => {
@@ -25,8 +30,11 @@ class App extends React.Component {
     // console.log(response);
 
     // `response.data.items` => an array of obj request obj returns when user search for videos
-    this.setState({ videos: response.data.items }
-    );
+    this.setState({ 
+      videos: response.data.items,
+      // as soon as user search first video will be on user screen left hand side
+      selectedVideo: response.data.items[0]
+    });
   };
 
   onVideoSelect = (video) => {
